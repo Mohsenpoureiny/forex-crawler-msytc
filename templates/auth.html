@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ورود یا ثبت نام</title>
+	<link href="./static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<script src='https://www.google.com/recaptcha/api.js'></script>
+
+
+</head>
+
+<body class=" bg-dark d-flex flex-column align-items-center justify-content-lg-center">
+	<div style="position: fixed; top: 0; margin-left: 40%; z-index: 1000;" id="Errors"></div>
+	<div class="card  container d-flex justify-content-lg-center align-items-center" style="margin-top: 7%;">
+		<h1>M.S.Y.T.C</h1>
+		<h5>Trading Management WebApplication</h5>
+	</div>
+	<div id="Login22" class="card container d-flex flex-row justify-content-sm-evenly" style="margin-top: 2%;">
+		<form action="/login/submit" method="POST"
+			class="d-flex flex-column align-items-center justify-content-sm-evenly h-50">
+			<h1 class="text-dark">Login</h1>
+			<input class="btn btn-light mb-1" type="text" name="username" id="username" placeholder="یوزرنیم">
+
+			<input class="btn btn-light mb-1" type="password" name="password" id="password" placeholder="پسورد">
+			{{ form.recaptcha }}
+			<button type="submit" id="SubmitLogin" class="btn btn-dark">Submit</button>
+
+		</form>
+		<br>
+		<div class="d-flex flex-column align-items-center  ">
+			<h1 class="text-dark">Sign in</h1>
+			<input class="btn btn-light mb-1" type="text" name="name" id="name" placeholder="نام">
+			<input class="btn btn-light mb-1" type="text" name="username" id="usernameSignin" placeholder="نام کاربری">
+			<input class="btn btn-light mb-1" type="password" name="password" id="passwordSignin" placeholder="پسورد">
+			<select class="btn btn-primary mb-1" name="" id="accType">
+				<option value="user">user</option>
+				<option value="admin">admin</option>
+			</select>
+			<button id="SubmitSignin" class="btn btn-dark">Submit</button>
+
+		</div>
+
+	</div>
+
+	<!--Full Stack Development By Mohsen Poureiny 09904671504-->
+	<script src="./static/js/jquery-3.5.1.js"></script>
+	<script src="./static/bootstrap/js/bootstrap.min.js"></script>
+
+	<script>
+		$(document).ready(function () {
+
+			$("#usernameSignin").keyup(function () {
+
+				if ($(this).val().length >= 8) {
+					$.get("/checkusername?username=" + $(this).val(), function (data, status) {
+						console.log(data)
+						if (data == 200) {
+							console.log("OK")
+
+							$("#usernameSignin").removeClass("btn-outline-danger");
+							$("#usernameSignin").removeClass("btn-light");
+
+							$("#usernameSignin").addClass("btn-outline-success");
+						} else {
+							$("#usernameSignin").removeClass("btn-light");
+							$("#usernameSignin").removeClass("btn-success");
+
+							$("#usernameSignin").addClass("btn-outline-danger");
+						}
+					})
+				} else {
+					$(this).removeClass("btn-light");
+					$(this).addClass("btn-outline-danger");
+
+				}
+
+			})
+
+		})
+		$("#SubmitSignin").click(function () {
+
+			if ($("#name").val() == "") {
+				$("#name").removeClass("btn-light");
+				$("#name").addClass("btn-outline-danger");
+				$("#Errors").append(
+					`<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>هی!! فیلد نام نمیتواند خالی
+		باشد</strong><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
+				)
+			}
+			if ($("#usernameSignin").val() == "") {
+				$("#usernameSignin").removeClass("btn-light");
+				$("#usernameSignin").addClass("btn-outline-danger");
+				$("#Errors").append(
+					`<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>هی!! فیلد نام کاربری نمیتواند خالی
+		باشد</strong><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
+				)
+			}
+			if ($("#passwordSignin").val() == "") {
+				$("#passwordSignin").removeClass("btn-light");
+				$("#passwordSignin").addClass("btn-outline-danger");
+				$("#Errors").append(
+					`<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>هی!! فیلد پسورد نمیتواند خالی
+		باشد</strong><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
+				)
+			} else {
+				console.log($("#usernameSignin").val())
+				$.get("/Signin/config", {
+					"name": $("#name").val(),
+					"username": $("#usernameSignin").val(),
+					"password": $("#passwordSignin").val(),
+					"accType": $("#accType").val()
+				}, function (data, status) {
+					if (data == "200") {
+						$("#Errors").append(
+							`<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>با موفقیت ثبت نام شد</strong><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
+						)
+
+					} else {
+						$("#Errors").append(
+							`<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>` +
+							data +
+							`</strong><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
+						)
+					}
+				})
+			}
+		})
+	</script>
+</body>
+
+</html>

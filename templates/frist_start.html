@@ -1,0 +1,69 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Start</title>
+    <link href="./static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body class="bg-dark d-flex justify-content-lg-center align-items-center">
+    <div style="position: fixed; margin-left: 800px; margin-bottom: 350px;" id="Errors"></div>
+
+    <div class="card w-25 h-75 d-flex justify-content-sm-evenly align-items-center " action="/firstRun/config"
+        method="POST">
+        <label class="text-dark" for="secret_key">secret_key :</label>
+        <input class="btn btn-outline-dark disabled" style="text-align: left;" type="text" name="secret_key"
+            id="secret_key" placeholder="Random Set">
+        <label class="text-dark" for="databasename">databasename :</label>
+        <input class="btn btn-outline-dark" style="text-align: left;" type="text" name="databasename" id="databasename"
+            placeholder="databasename">
+        <label class="text-dark" for="platform_version">platform_version :</label>
+        <input class="btn btn-outline-dark disabled" style="text-align: left;" type="text" name="platform_version"
+            id="platform_version" placeholder="v1.00">
+        <button class="btn btn-primary" id="Submit">Submit</button>
+
+    </div>
+    <script src="./static/js/jquery-3.5.1.js"></script>
+    <script src="./static/bootstrap/js/bootstrap.min.js"></script>
+    <script>
+        $("#Submit").click(function () {
+
+
+                if ($("#databasename").val() == "") {
+                    $("#databasename").removeClass("btn-outline-dark");
+                    $("#databasename").addClass("btn-outline-danger");
+                    $("#Errors").append(
+                        `<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>هی!! فیلد سرور نمیتواند خالی باشد</strong><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
+                    )
+
+                } else {
+                    $.post("/firstRun/config", {
+                        "secret_key": $("#secret_key").val(),
+                        "databasename": $("#databasename").val(),
+                        "platform_version": $("#platform_version").val()
+                    }, function (data, status) {
+                        if (data == "200") {
+                            $("#Errors").append(
+                                `<div class="alert alert-success alert-dismissible fade show" role="alert"><strong>با موفقیت ثبت شد</strong><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
+                            )
+                            $(location).attr('href', '/')
+
+                        } else {
+                            $("#Errors").append(
+                                `<div class="alert alert-danger alert-dismissible fade show" role="alert"><strong>` +
+                                data +
+                                `</strong><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>`
+                            )
+                        }
+                    })
+                }
+            }
+
+
+        )
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,185 @@
+.board {
+  width: 1345px;
+  height: 500px;
+  display: flex;
+  margin-left: 10px;
+  margin-top: 10px;
+  flex-direction: row;
+
+}
+.Case--1{
+  width: 190px;
+}
+.part1table {
+  overflow-x: auto;
+  width: 200px;
+  height: 495px;
+
+}
+
+.listgrouppart2 {
+  width: 200px;
+  height: 495px;
+}
+
+#closebtn {
+  margin: 5px;
+}
+
+#labal-cp {
+  margin-top: 3px;
+  margin-left: 535px;
+  font-size: 13px;
+}
+
+.select-symbols {
+  width: 310px;
+  margin-top: 20px;
+  margin-left: 17px;
+  margin-top: 20px;
+}
+
+.btn-Raise {
+  margin: 3px;
+  width: 20px;
+  height: 20px;
+  padding: 0;
+}
+
+.Case--3-part-2 {
+  width: 150px;
+  margin-top: 25px;
+  margin-left: 100px;
+  margin-bottom: 60px;
+}
+
+.Case--3-part-3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+
+}
+
+.btn--buy-sell {
+  margin: 2px;
+  width: 150px;
+}
+
+#exampleFormControlSelect2 {
+  height: 498px;
+}
+
+.MassageBox {
+
+  overflow-y: scroll;
+  padding: 10px;
+  background-image: url("../img/chatbackgrand.jpg");
+
+}
+
+.Massage {
+  width: 20px;
+  margin-left: 195px;
+  margin-bottom: 0;
+
+}
+
+.Profile-pictures {
+  width: 30px;
+  border-radius: 30px;
+  border-style: double;
+  border-color: #fff;
+  border-width: 2px;
+}
+
+.Profile-ID {
+  margin-left: 10px;
+}
+
+.users-list {
+  overflow-y: scroll;
+  height: 450px;
+  width: 200px;
+  ;
+}
+
+.btn-refresh {
+  width: 190px;
+  height: 42px;
+  margin: 4px 0px;
+}
+
+
+
+.tabales {
+  overflow-y: scroll;
+  height: 450px;
+  width: 180px;
+
+}
+
+.tabales-right {
+  overflow-y: scroll;
+
+  height: 500px;
+
+}
+
+.Case--2 {
+  width: 180px;
+
+}
+
+.Case--4 {
+
+  width: 180px;
+}
+.Case--5{
+  width: 210px;
+}
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row-reverse;
+  width: 1345px;
+  margin-left: 10px;
+  margin-top: 50px;
+  margin-bottom: 0;
+  height: 40px;
+}MassageBox
+.w-200p{
+  width: 200px;
+}
+.w-180p{
+  width: 180px;
+}
+.w-250p{
+  width: 250px;
+
+}
+.userid {
+  margin: 5px;
+}
+.on{
+  background-color: rgb(64, 175, 0);
+
+}
+.off{
+  background-color: rgb(175, 0, 0);
+  
+}
+.onoff{
+  width: 60px;
+  padding: 3px;
+  height: 30px;
+  margin-left: 5px;
+}
+
+.toast{
+  width: 220px;
+}
+.alert{
+  font-size: 15px;;
+}

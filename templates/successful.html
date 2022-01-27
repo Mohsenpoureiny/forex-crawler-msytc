@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>موفقیت</title>
+	<link href="{{url_for('static',filename='bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+
+
+</head>
+
+<body class=" bg-dark mt-5">
+    <div class=" d-flex flex-column justify-content-lg-center align-items-md-center card container">
+        <h1 class="text-success ">موفقیت!</h1>
+        <h4 class="m-5 "> تغییرات با موفقیت اعمال شد!</h4>
+        
+        <button onclick="location.href='/followUsers'" class="closewin btn"><img src="https://img.icons8.com/nolan/64/checked-user-male.png"/></button>
+        <button onclick="location.href='/Admin/settings'" class="closewin btn"><img src="https://img.icons8.com/nolan/64/settings.png"/></button>
+
+        <button onclick="location.href='/'" class="closewin btn"><img src="https://img.icons8.com/nolan/64/home-page.png"/></button>
+
+
+    </div>
+
+</body>
+
+</html>

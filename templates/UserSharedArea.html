@@ -1,0 +1,141 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{username}} Shared Area</title>
+  <link href="/static/img/Profile-Pictures/{{pic}}.png" rel="icon" type="image/x-icon" />
+
+  <link href="{{url_for('static',filename='bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+  <link rel="stylesheet" href="{{url_for('static',filename='style/style.css')}}">
+</head>
+
+<body class="bg-dark">
+  <header class="container mb-5">
+    <div>
+      <div class="card d-lg-flex flex-row-reverse justify-content-between mt-5 align-items-center">
+        <div>
+
+          <button onclick="location.href='/'" class="closewin btn"><img
+              src="https://img.icons8.com/nolan/37/home-page.png" /></button>
+
+          <button onclick="location.href='/logout'" class="closewin btn "><img
+              src="https://img.icons8.com/nolan/37/exit-sign.png" /></button>
+
+
+
+
+        </div>
+        <div class="d-flex flex-column justify-content-lg-center align-items-center">
+          <h3>M.S.Y.T.C</h3>
+          <h6>Trading Management WebApplication</h6>
+        </div>
+        <div>
+          <div id="onlinecheck" class="btn btn-success">online</div>
+          <h6><b class="text-dark userid"><span class="text-secondary">@{{username}}</span></b></h6>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container d-flex flex-row h-75">
+
+
+
+    <div class="card d-flex justify-content-xl-center align-items-md-center w-100 h-630px">
+      <h1 id="conection" class="text-success ">Shared Area Connected</h1>
+      <h4 class="text-secondary ">Connected To : {{room}}</h4>
+      <section id="Ordertext" style="color: aliceblue;"></section>
+      <section id="TpSlOrders" style="color: aliceblue;"></section>
+
+    </div>
+
+
+    <div class="d-flex flex-column align-items-center justify-content-lg-center draggable w-600px h-630px">
+
+      <div id="MassageBoxId" class=" MassageBox card  w-100 h-580px">
+
+
+
+      </div>
+
+
+      <div class="card d-flex flex-row align-items-center justify-content-sm-between w-600px">
+
+        <textarea type="text" class="btn text-align-left w-300px" id="MessageHolder"
+          placeholder="Write a message..."></textarea>
+        <div class="emojiPicker draggable" style="display: none;">
+          <div class="emojiFrame1 bg-secondary float-end"><span class="">❌</span></div>
+
+          <div class="emojis ">
+            <div class="emojiFrame"><span id="128540" class="emoji">&#128540;</span></div>
+            <div class="emojiFrame"><span id="128513" class="emoji">&#128513;</span></div>
+            <div class="emojiFrame"><span id="128514" class="emoji">&#128514;</span></div>
+            <div class="emojiFrame"><span id="128515" class="emoji">&#128515;</span></div>
+            <div class="emojiFrame"><span id="128516" class="emoji">&#128516;</span></div>
+            <div class="emojiFrame"><span id="128517" class="emoji">&#128517;</span></div>
+            <div class="emojiFrame"><span id="128518" class="emoji">&#128518;</span></div>
+            <div class="emojiFrame"><span id="128519" class="emoji">&#128519;</span></div>
+            <div class="emojiFrame"><span id="128521" class="emoji">&#128521;</span></div>
+            <div class="emojiFrame"><span id="128522" class="emoji">&#128522;</span></div>
+            <div class="emojiFrame"><span id="128523" class="emoji">&#128523;</span></div>
+            <div class="emojiFrame"><span id="128524" class="emoji">&#128524;</span></div>
+            <div class="emojiFrame"><span id="128525" class="emoji">&#128525;</span></div>
+            <div class="emojiFrame"><span id="128526" class="emoji">&#128526;</span></div>
+            <div class="emojiFrame"><span id="128527" class="emoji">&#128527;</span></div>
+            <div class="emojiFrame"><span id="128528" class="emoji">&#128528;</span></div>
+            <div class="emojiFrame"><span id="128529" class="emoji">&#128529;</span></div>
+            <div class="emojiFrame"><span id="128530" class="emoji">&#128530;</span></div>
+            <div class="emojiFrame"><span id="128531" class="emoji">&#128531;</span></div>
+            <div class="emojiFrame"><span id="128532" class="emoji">&#128532;</span></div>
+            <div class="emojiFrame"><span id="128533" class="emoji">&#128533;</span></div>
+            <div class="emojiFrame"><span id="128534" class="emoji">&#128534;</span></div>
+            <div class="emojiFrame"><span id="128535" class="emoji">&#128535;</span></div>
+            <div class="emojiFrame"><span id="128536" class="emoji">&#128536;</span></div>
+            <div class="emojiFrame"><span id="128537" class="emoji">&#128537;</span></div>
+            <div class="emojiFrame"><span id="128538" class="emoji">&#128538;</span></div>
+            <div class="emojiFrame"><span id="128539" class="emoji">&#128539;</span></div>
+            <div class="emojiFrame"><span id="128546" class="emoji">&#128546;</span></div>
+
+
+
+          </div>
+        </div>
+        <div class="emojiFrame2"><span class="">&#128540;</span></div>
+        <button id="SendMessage" class="btn btn-primary ">💬</button>
+
+      </div>
+    </div>
+  </div>
+  <script>
+    const username = "{{username}}";
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
+
+  <script src="/static/bootstrap/js/bootstrap.bundle.min.js"
+    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous">
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"
+    integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous">
+  </script>
+  <script src="{{url_for('static',filename='bootstrap/js/bootstrap.min.js')}}"
+    integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous">
+  </script>
+  <!--<script src="{{url_for('static',filename='js/jquery-3.5.1.js')}}"></script>-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+  <script src="{{url_for('static',filename='js/jquery-ui.js')}}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
+  <script type="text/javascript">
+    const user_name = '{{username}}';
+    const pic = '{{pic}}';
+    const smt = 'User';
+    const room = '{{room}}';
+  </script>
+  <script src="/static/js/MessageForUser.js?random={{random}}"></script>
+  <script src="/static/js/script.js?random={{random}}"></script>
+
+
+</body>
+
+</html>

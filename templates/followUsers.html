@@ -1,0 +1,105 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{name}} Home Page</title>
+    <link href="./static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./static/style/style.css">
+
+</head>
+
+<body class="bg-dark">
+    <header class="container mb-5">
+        <div>
+            <div class="card d-lg-flex flex-row-reverse justify-content-between mt-5 align-items-center">
+                <div>
+                    <button onclick="location.href='/'" class="closewin btn"><img src="https://img.icons8.com/nolan/37/home-page.png"/></button>
+
+                    <button onclick="location.href='/logout'" class="closewin btn "><img src="https://img.icons8.com/nolan/37/exit-sign.png"/></button>
+          
+                </div>
+                <div class="d-flex flex-column justify-content-lg-center align-items-center">
+                    <h3>M.S.Y.T.C</h3>
+                    <h6>Trading Management WebApplication</h6>
+                  </div>
+                <div>
+                    <div id="onlinecheck" class="btn btn-success">online</div>
+                    <h6><b class="text-dark userid"> <span class="text-secondary">@{{username}}</span></b></h6>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container d-flex flex-row h-75">
+
+        <div class="list-group card w-25">
+
+            <button onclick="location.href='/'" type="button" class="list-group-item list-group-item-action "><img src="https://img.icons8.com/nolan/64/home-page.png"/>Admin page</button>
+            <button onclick="location.href='/Admin/settings'" type="button" class="list-group-item list-group-item-action "><img src="https://img.icons8.com/nolan/64/settings.png"/>Admin settings</button>
+            <button onclick="location.href='/followUsers'" type="button" class="list-group-item active list-group-item-action "><img src="https://img.icons8.com/nolan/64/checked-user-male.png"/>follow Users</button>
+            
+            <button onclick="location.href='/history'" type="button" class="list-group-item list-group-item-action"><img src="https://img.icons8.com/nolan/64/clock.png"/>Orders History</button>
+      
+            <button onclick="location.href='/Admin/EnterSharedArea'" class="btn btn-warning"><img src="https://img.icons8.com/nolan/64/share-2.png"/>Enter the Shared Area</button>
+      
+
+        </div>
+
+        <div class="card d-flex justify-content-xl-start align-items-md-center w-100">
+            <table class="table h-75 table-bordered">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Username</th>
+                        <th>Sign Date</th>
+                        <th>Status</th>
+                        <th>Follow</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {% for i in names %}
+                    {% if usernames[names.index(i)][0] in Myusers %}
+                    <tr class=" table-success">
+
+                        <th>{{i[0]}}</th>
+                        <th>{{usernames[names.index(i)][0]}}</th>
+                        <th>{{dates[names.index(i)][0]}}</th>
+                        <th>followed</th>
+                        <th style="text-align: center;"><img src="https://img.icons8.com/nolan/45/approval.png"/></th>
+
+                    </tr>
+                    {% endif %}
+                    {% if usernames[names.index(i)] in usersHasAdmin and (usernames[names.index(i)][0] in Myusers) == False %}
+                    <tr class=" table-secondary">
+
+                        <th>{{i[0]}}</th>
+                        <th>{{usernames[names.index(i)][0]}}</th>
+                        <th>{{dates[names.index(i)][0]}}</th>
+                        <th>Another Admin follows him</th>
+                        <th style="text-align: center;"><img src="https://img.icons8.com/nolan/45/cancel-2.png"/></th>
+
+                    </tr>
+                    {% endif %}
+                    {% if (usernames[names.index(i)][0] in Myusers)==False and ( usernames[names.index(i)] in usersHasAdmin) == False %}
+                    <tr class=" table-info">
+                        <th>{{i[0]}}</th>
+                        <th>{{usernames[names.index(i)][0]}}</th>
+                        <th>{{dates[names.index(i)][0]}}</th>
+                        <th>--</th>
+                        <th style="text-align: center;"> <button onclick="location.href='/follow?username={{usernames[names.index(i)][0]}}'"
+                                class="btn"><img src="https://img.icons8.com/nolan/45/add-user-male.png"/></button> </th>
+
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+
+
+</html>

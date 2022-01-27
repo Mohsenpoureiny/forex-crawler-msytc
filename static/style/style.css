@@ -1,0 +1,198 @@
+.text-align-left {
+    text-align: left;
+}
+
+.text-align-right {
+    text-align: right;
+}
+
+
+
+.h-500px {
+    height: 500px;
+
+}
+
+.h-630px {
+    height: 630px;
+}
+
+.h-580px {
+    height: 580px;
+}
+
+.w-200px {
+    width: 200px;
+}
+
+.w-300px {
+    width: 300px;
+}
+
+.w-600px {
+    width: 430px;
+
+}
+
+.w-390px {
+    width: 390px;
+
+}
+
+
+/* component */
+.emojiPicker {
+    /* 5 emojis in row */
+    /* width: 212px;  */
+
+    /* 6 emojis in row */
+    /* width: 254px; */
+
+    /* 7 emojis in row */
+    width: 296px;
+
+    border: 1px solid #0d8cfc;
+    background-color: aliceblue;
+    position: fixed;
+    -webkit-box-shadow: 1px 1px 5px -1px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 1px 1px 5px -1px rgba(0, 0, 0, 0.75);
+    box-shadow: 1px 1px 5px -1px rgba(0, 0, 0, 0.75);
+}
+
+.emojis {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.emojiFrame {
+    box-sizing: content-box;
+    user-select: none;
+    text-align: center;
+    cursor: pointer;
+    width: 30px;
+    font-size: 21px;
+    padding: 3px;
+    margin: 3px;
+    background-color: transparent;
+    transform: scale(0.9);
+
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.emojiFrame:hover {
+    background-color: #0d8cfc;
+}
+
+.emojiFrame:active {
+    background-color: #4babff;
+    transform: scale(0.95);
+}
+
+.emojiFrame1 {
+    box-sizing: content-box;
+    user-select: none;
+    text-align: center;
+    cursor: pointer;
+    width: 30px;
+    font-size: 21px;
+    padding: 3px;
+    margin: 3px;
+    background-color: transparent;
+    transform: scale(0.9);
+
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.emojiFrame1:hover {
+    background-color: #0d8cfc;
+}
+
+.emojiFrame1:active {
+    background-color: #4babff;
+    transform: scale(0.95);
+}
+
+.emojiFrame2 {
+    box-sizing: content-box;
+    user-select: none;
+    text-align: center;
+    cursor: pointer;
+    width: 30px;
+    font-size: 21px;
+    padding: 3px;
+    margin: 3px;
+    background-color: transparent;
+    transform: scale(0.9);
+
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+.emojiFrame2:hover {
+    background-color: #0d8cfc;
+}
+
+.emojiFrame2:active {
+    background-color: #4babff;
+    transform: scale(0.95);
+}
+
+.MassageBox {
+
+    overflow-y: scroll;
+    padding: 10px;
+    background-image: url("../img/chatbackgrand.jpg");
+
+}
+
+.Profile-pictures {
+    width: 30px;
+    border-radius: 100%;
+    border-style: double;
+    border-color: #fff;
+    border-width: 2px;
+}
+
+.chatbox {
+    border: 2px solid #dedede;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+    width: 300px;
+}
+
+.darker {
+    border-color: #ccc;
+    background-color: #ddd;
+}
+
+.chatbox::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.profimg {
+    float: left;
+    max-width: 60px;
+    width: 100%;
+    margin-right: 20px;
+    border-radius: 50%;
+}
+
+.profimg.right {
+    float: right;
+    margin-left: 20px;
+    margin-right: 0;
+}
+
+.time-right {
+    float: right;
+    color: #aaa;
+}
+
+.time-left {
+    float: left;
+    color: #999;
+}
